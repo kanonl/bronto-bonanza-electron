@@ -1,0 +1,21 @@
+{
+  "name": "bronto-bonanza",
+  "version": "1.0.0",
+  "description": "Bronto email message generator.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npx electron .",
+    "build": "cd app/ & buildtemplates.bat",
+    "package": "npx electron-packager . --asar",
+    "test": "npx electron ."
+  },
+  "author": "Kanon Lo",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.0.0",
+    "electron-packager": "^14.1.0"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}

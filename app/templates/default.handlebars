@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ totalCount }}</title>
+    <link rel="stylesheet" href="../css/main.css">
+
+    {{> style }}
+</head>
+
+<body>
+    <div class="container">
+        <table width="600" align="center">
+            <tr>
+                <td>
+                    <table class="header" width="600">
+                        <tr>
+                            <td><a href="https://www.{{ site.domain }}/?code={{ form.sourceCode }}"><img
+                                        src="{{ site.logoImage }}" height="90"></a>
+                            </td>
+                            <td align="right">
+                                <div><a href="{{ form.headerUrl }}?code={{ form.sourceCode }}">{{ form.headerText }}</a>
+                                </div>
+                                <div>{{ site.orderNumber }} U.S.-based</div>
+                                <div>24 Hour Call Center</div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table width="600" style="font-size: 12px; text-align: center;">
+                        <tr>
+                            <td><a href="%%!message_url%%" style="color: black; text-decoration: none;">Click here</a>
+                                to view in browser</td>
+                        </tr>
+                    </table>
+
+                    <table class="nav" width="600">
+                        <tr style="height: 25px;">
+                            {{> (siteId) }}
+                        </tr>
+                    </table>
+
+                    {{#if form.bannerTextTop }}
+                    {{> banner text=form.bannerTextTop background-image=backgroundImageId.banner }}
+                    {{/if}}
+
+                    <table class="content" width="600"
+                        style="padding: 1rem 0; width: 600px; background-image: url(https://cdn-tp4.mozu.com/25762-m1/cms/files/{{ backgroundImageId.content }});"
+                        background="https://cdn-tp4.mozu.com/25762-m1/cms/files/{{ backgroundImageId.content }}">
+                        <tr>
+                            {{#each activeItems}}
+                            <td align="center">
+                                <div class="item" style="width: 250px;">
+                                    <a href="https://www.{{ ../site.domain }}{{ url }}?code={{ ../form.sourceCode }}"><img
+                                            src="https://cdn-tp4.mozu.com/25762-m1/cms/files/{{ content.productImages.0.cmsId }}"
+                                            alt="{{content.productName}}" width="250"
+                                            style="border: 1px solid #eee; width: 250px;"></a>
+                                    <h4 style="font-size: 14px; margin: 0;">{{ content.productName }}</h4>
+                                    <div class="productCode hidden" style="font-size: 12px;">{{ productCode }}</div>
+                                    <div class="price" style="font-size: 12px;">{{{ price.label }}}</div>
+                                </div>
+                            </td>
+                            {{#ifRowEnd @index}}{{/ifRowEnd}}
+                            {{/each}}
+                    </table>
+
+                    {{#if form.bannerTextBottom }}
+                    {{> banner text=form.bannerTextBottom background-image=backgroundImageId.banner }}
+                    {{/if}}
+
+                    {{> footer }}
+
+                    {{> CAN-SPAM }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
